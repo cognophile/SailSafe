@@ -47,17 +47,8 @@ namespace SailSafe___1413042
         /// <param name="outputStream">An output stream</param>
         public override void SaveLaneData(StreamWriter outputStream)
         {
-            StringBuilder outputStringBuilder = new StringBuilder();
-            outputStringBuilder.Append(
-                VehicleType + ","
-                + Name + ","
-                + License + ","
-                + Time + ","
-                + DirectionNtoS + ","
-                + DirectionStoN + ","
-                + VehicleLength
-            );
-            outputStream.WriteLine(outputStringBuilder);
+            string output = string.Join(", ", VehicleType, Name, License, Time, DirectionNtoS, DirectionStoN, VehicleLength);
+            outputStream.WriteLine(output);
         }
     }
 }
