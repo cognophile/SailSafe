@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace SailSafe___1413042
+namespace SailSafe
 {
     public class Lane 
     {
         protected int spaceAvailable = 30;
         protected int spaceOccupied = 0;
         public static string LaneID { get; set; }
-        public Vehicle Vehicle = new Vehicle();
+        private List<Vehicle> vehicles = new List<Vehicle>();
 
         /// <summary>
         /// Lane object Constructor
@@ -50,7 +50,6 @@ namespace SailSafe___1413042
             set { this.spaceOccupied = value; }
         }
 
-        // StreamWriter 
         public virtual void SaveLaneData(StreamWriter outputStream) { }
 
         /// <summary>
@@ -68,9 +67,6 @@ namespace SailSafe___1413042
                 {
                     if (objRef.lanes[n].SpaceAvailable > currentToAdd.VehicleLength)
                     {
-                        // Add the entryt to the list
-                        // Deduct VehicleLength from the Space Available counter when added
-                        // Add the VehicleLength property to the Space Occupied counter
                         objRef.lanes.Add(currentToAdd);
                         objRef.lanes[n].SpaceAvailable -= currentToAdd.VehicleLength;
                         objRef.lanes[n].SpaceOccupied += currentToAdd.VehicleLength;
@@ -139,7 +135,5 @@ namespace SailSafe___1413042
                 }
             }
         }
-
-        
     }
 }

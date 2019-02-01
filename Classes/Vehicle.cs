@@ -1,35 +1,21 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using System.IO;
+using SailSafe.Classes;
 
-namespace SailSafe___1413042
+namespace SailSafe
 {
-    // Documentaion Reference for explanation of Improper OOP practice, using inheritence.
     public class Vehicle : Lane
     {
-        #region Member Variables
-
-        // Instance Variables
         protected int time;
         protected bool directionNtoS;
         protected bool directionStoN;
-        
-
         protected int vehicleLength;
-        //protected string vehicleType;
-        //protected string license;
-        #endregion
 
-        #region Encapsulating Variable Properties
         // C# 3.0 - Shorthand Encapsulation of Properties - Ref:
         // Lynda - Course: C# Essential Training (Section 8.4 - 'Declaring properties with shorthand get and set methods')
         public string Name { get; set; }
         public string License { get; set; }
-        
+        public string Type { get; set; }
+
         public int Time
         {
             get { return this.time; }
@@ -54,31 +40,9 @@ namespace SailSafe___1413042
             set { this.vehicleLength = value; }
         }
 
-        ///// <summary>
-        ///// License here will allow the storage of just a vehicle object in the lane, referencable by the license (comparing lanes to bookings to find a match?)
-        ///// </summary>
-        //public string License
-        //{
-        //    get { return this.license; }
-        //    set { this.license = value; }
-        //}
-        #endregion
-
-        #region Constructors
-        // Empty Constructor - Allows blank constructor or overloaded constructors
         public Vehicle()
         {
         }
-        
-        /// <summary>
-        /// Vehicle Class Constructor - Instantiation allows for definition of a vehicle type and length for that Object reference (eg. Car)
-        /// Rad Buttons that create new Vehicle Objects with specific type/length?
-        /// </summary>
-        //public Vehicle(string vehicleType, int vehicleLength)
-        //{
-        //    this.vehicleType = vehicleType;
-        //    this.vehicleLength = vehicleLength;
-        //}
 
         /// <summary>
         /// Constructor for creating a new title.
@@ -107,9 +71,7 @@ namespace SailSafe___1413042
             this.time = time;
             this.DirectionNtoS = directionNtoS;
             this.DirectionStoN = directionStoN;
-            
         }
-        #endregion
 
         /// <summary>
         /// Load in the Text file contents
@@ -122,17 +84,17 @@ namespace SailSafe___1413042
             string dataInput = inputStream.ReadLine();
 
             // Find a way to append a lane ID to the stream data
-            if (dataInput.StartsWith(Car.VehicleType))
+            if (dataInput.StartsWith(VehicleType.Car))
             {
                 data = new Car(dataInput);
             }
 
-            if (dataInput.StartsWith(Van.VehicleType))
+            if (dataInput.StartsWith(VehicleType.Van))
             {
                 data = new Van(dataInput);
             }
 
-            if (dataInput.StartsWith(Large.VehicleType))
+            if (dataInput.StartsWith(VehicleType.Large))
             {
                 data = new Large(dataInput);
             }

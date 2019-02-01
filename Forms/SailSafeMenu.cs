@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace SailSafe___1413042
+namespace SailSafe
 {
     public partial class SailSafeMenu : Form
     {
@@ -10,8 +10,6 @@ namespace SailSafe___1413042
         {
             InitializeComponent();
         }
-
-        #region Event Methods
         
         private void button1_Click(object sender, EventArgs e)
         {
@@ -53,6 +51,5 @@ namespace SailSafe___1413042
         {
             Application.Exit();
         }
-        #endregion
     }
 }

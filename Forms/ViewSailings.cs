@@ -3,7 +3,7 @@ using System;
 using System.Windows.Forms;
 using System.IO;
 
-namespace SailSafe___1413042
+namespace SailSafe
 {
     public partial class ViewSailings : Form
     {
@@ -13,13 +13,10 @@ namespace SailSafe___1413042
             
         }
 
-        #region Instance/Static Members
         // Cite: (MSDN, 2015, Environment.GetFolderPath Method (Environment.SpecialFolder))
         static string destPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         static string destFile = Path.Combine(destPath, "SailSafeLog.txt");
-        #endregion
 
-        #region Event Methods
         /// <summary>
         /// When the Menu button is clicked, it will close this form, and direct the user to a new instantiation of the menu form.
         /// </summary>
@@ -60,7 +57,5 @@ namespace SailSafe___1413042
             addBooking.Show();
             this.Hide();
         }
-
-        #endregion
     }
 }

@@ -1,45 +1,18 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+using SailSafe.Classes;
 
-namespace SailSafe___1413042
+namespace SailSafe
 {
     public class Booking
     {
-        #region Instance Variables
-        protected int time;
-        protected bool directionNtoS;
-        protected bool directionStoN;
-        #endregion
+        private readonly BookingRepository repository;
 
-        #region Encapsulation of Variable Properties
-        // C# 3.0 - Shorthand Encapsulation of Properties - Ref:
-        // Lynda - Course: C# Essential Training (Section 8.4 - 'Declaring properties with shorthand get and set methods')
+        public int Time { get; set; }
         public string Name { get; set; }
         public string License { get; set; }
-        public int Time
-        {
-            get { return this.time; }
-            set { this.time = value; }
-        }
-        public bool DirectionNtoS
-        {
-            get { return this.directionNtoS; }
-            set { this.directionNtoS = value; }
-        }
-        public bool DirectionStoN
-        {
-            get { return this.directionStoN; }
-            set { this.directionStoN = value; }
-        }
-        
-        #endregion
+        public string Direction { get; set; }
 
-        #region Constructor
         /// <summary>
         /// Constructor
         /// </summary>
@@ -47,14 +20,19 @@ namespace SailSafe___1413042
         /// <param name="license"> The License Plate of the Guest's Vehicle </param>
         /// <param name="time"> The Sailing Time the Guest will be booked for </param>
         /// <param name="direction"></param>
-        public Booking(string name, string license, int time, bool directionNtoS, bool directionStoN)
+        public Booking(string name, string license, int time, string direction)
         {
+            this.repository = new BookingRepository();
+
             Name = name;
             License = license;
-            this.time = time;
-            this.directionNtoS = directionNtoS;
-            this.directionStoN = directionStoN;
+            Time = time;
+            Direction = direction;
         }
-        #endregion 
+
+        public bool Write()
+        {
+            return this.repository.Save();
+        }
     }
 }

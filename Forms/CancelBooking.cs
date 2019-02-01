@@ -3,11 +3,10 @@ using System;
 using System.Windows.Forms;
 using System.IO;
 
-namespace SailSafe___1413042
+namespace SailSafe
 {
     public partial class CancelBooking : Form
     {
-        #region Instance/static Members
         public static string exMessage;
 
         // Cite: (MSDN, 2015, Environment.GetFolderPath Method (Environment.SpecialFolder))
@@ -16,14 +15,12 @@ namespace SailSafe___1413042
         // Caused by attempting to assign non-static instance variable to another non-static instance variable.
         static string destPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         string destFile = Path.Combine(destPath, "SailSafeLog.txt");
-        #endregion
 
         public CancelBooking()
         {
             InitializeComponent();
         }
 
-        #region Event Methods
         private void btnEditHome_Click(object sender, EventArgs e)
         {
             SailSafeMenu returnHome = new SailSafeMenu();
@@ -112,14 +109,10 @@ namespace SailSafe___1413042
                 }
                 finally
                 {
-                    //Clean Up
                     txtNameRemove.Text = "";
                     txtPlateRemove.Text = "";
-
                 }
             }
-        #endregion
-
         }
     }
 }

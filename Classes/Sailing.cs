@@ -7,22 +7,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace SailSafe___1413042
+namespace SailSafe
 {
     public class Sailing
     {
-        #region Member Variables (Instance and Static)
         public readonly static string destPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         public static string destFile = Path.Combine(destPath, "SailSafeLog.txt");
 
-        bool directionNtoS;
-        bool directionStoN;
+        string direction;
         int _time;
 
         public List<Lane> lanes = new List<Lane>();
-        #endregion
 
-        #region Constructor
         public Sailing()
         {
             for (int n = 0; n < 3; n++)
@@ -30,11 +26,9 @@ namespace SailSafe___1413042
                 lanes.Add(new Lane(30, 0));
             }
 
-            LoadFromExSource();
+            this.LoadFromExSource();
         }
-        #endregion
 
-        #region Class Methods
         /// <summary>
         /// Method to Load Contents of the External Text File
         /// </summary>
@@ -56,12 +50,18 @@ namespace SailSafe___1413042
         public void SaveToExSource()
         {
             StreamWriter outputStream = new StreamWriter(destFile);
-            for (int i=0; i<lanes.Count; i++)
+            for (int i = 0; i < lanes.Count; i++)
             {
                 lanes[i].SaveLaneData(outputStream);
             }
 
             outputStream.Close();
+        }
+
+        private void WriteLaneData(StreamWriter outputStream, Lane lane, Vehicle vehicle) 
+        {
+            string output = string.Join(", ", vehicle.Type, vehicle.Name, vehicle.License, vehicle.Time, vehicle.DirectionNtoS, vehicle.DirectionStoN, vehicle.VehicleLength);
+            outputStream.WriteLine(output);
         }
 
         /// <summary>
@@ -74,6 +74,5 @@ namespace SailSafe___1413042
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SignIn());
         }
-        #endregion
     }
 }

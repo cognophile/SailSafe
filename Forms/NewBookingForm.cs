@@ -7,26 +7,22 @@ using System;
 using System.Windows.Forms;
 using System.IO;
 
-namespace SailSafe___1413042
+namespace SailSafe
 {
     public partial class NewBookingForm : Form
     {
         public NewBookingForm()
         {
-            InitializeComponent();
-            
+            InitializeComponent();   
         }
 
-        #region Instance/Static Members
         // Cite: (MSDN, 2015, Environment.GetFolderPath Method (Environment.SpecialFolder))
         // Output Stream - Specify Path
         // Static as to not create ""A field initializer cannot reference the nonstatic field, method, or property..." error.
         // Caused by attempting to assign non-static instance variable to another non-static instance variable.
         static string destPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         string destFile = Path.Combine(destPath, "SailSafeLog.txt");
-        #endregion
 
-        #region Event Methods
         private void button4_Click(object sender, EventArgs e)
         {
             SailSafeMenu homeButton = new SailSafeMenu();
@@ -40,16 +36,14 @@ namespace SailSafe___1413042
         /// <param name="sender">Save Button</param>
         /// <param name="e"></param>
         private void btnWriteStream_Click(object sender, EventArgs e)
-        {
-            
+        {   
             if (!Directory.Exists(destFile) || new FileInfo(destFile).Length == 0)
             {
-                AppendStream();               
+                this.AppendStream();               
             }
             else
             {
-                // If the file doesn't exist, jump here and create it and the stream.
-                CreateStream();              
+                this.CreateStream();              
             }
             
         }
@@ -72,10 +66,7 @@ namespace SailSafe___1413042
             radLargeVehicle.Checked = false;
 
         }
-
-        #endregion
-
-        #region Stream Methods
+        
         /// <summary>
         /// This method will create and open the stream, then take and place the required info in the .txt file.
         /// Cite: (Bell and Parr, 2009, Ch. 18 - Files)
@@ -180,7 +171,6 @@ namespace SailSafe___1413042
                 appendStream.Close();
             }
         }
-        #endregion
     }
 }
     

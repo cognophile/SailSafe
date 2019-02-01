@@ -1,26 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using System.IO;
+using SailSafe.Classes;
 
-namespace SailSafe___1413042
+namespace SailSafe
 {
     class Car : Vehicle
     {
-        #region Class Variables
-        public const string VehicleType = "Car";
         // Override - Polymorphism use - overrides the value of VehicleLength depending on which Vehicle class is called.
         // Cite: https://www.youtube.com/watch?v=4a_iTOtGhM8&list=PLAC325451207E3105&index=23
         public override int VehicleLength { get { return 3; } }
-        #endregion
 
-        #region Constructors
         public Car ()
         {
+            this.Type = VehicleType.Car;
         }
-        
+
         /// <summary>
         /// Constructor for creating a new title.
         /// </summary>
@@ -30,6 +23,7 @@ namespace SailSafe___1413042
         public Car(string name, string license, int time, bool directionNtoS, bool directionStoN)
             : base(name, license, time, directionNtoS, directionStoN)
         {
+            this.Type = VehicleType.Car;
         }
 
         /// <summary>
@@ -38,11 +32,12 @@ namespace SailSafe___1413042
         /// <param name="source"> ',' delimited string of data read back in from a file </param>
         public Car(string source)
         {
+            this.Type = VehicleType.Car;
+
             string[] data = source.Split(',');
             Builder(data[1], data[2], int.Parse(data[3]), bool.Parse(data[4]),
                 bool.Parse(data[5]));
         }
-        #endregion
 
         /// <summary>
         /// Save the state of the object to a stream
@@ -50,7 +45,7 @@ namespace SailSafe___1413042
         /// <param name="outputStream">An output stream</param>
         public override void SaveLaneData(StreamWriter outputStream)
         {
-            string output = string.Join(", ", VehicleType, Name, License, Time, DirectionNtoS, DirectionStoN, VehicleLength);
+            string output = string.Join(", ", Type, Name, License, Time, DirectionNtoS, DirectionStoN, VehicleLength);
             outputStream.WriteLine(output);
         }
     }

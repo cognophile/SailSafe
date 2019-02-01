@@ -1,4 +1,4 @@
-﻿namespace SailSafe___1413042
+﻿namespace SailSafe
 {
     partial class ViewSailings
     {
