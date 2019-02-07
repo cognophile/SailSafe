@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace SailSafe.Classes
 {
     public static class VehicleType

@@ -1,68 +1,99 @@
 ﻿
-
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
+using System.Collections.Generic;
+
+using SailSafe.Classes;
+using System.Globalization;
 
 namespace SailSafe
 {
     public class Sailing
     {
-        public readonly static string destPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-        public static string destFile = Path.Combine(destPath, "SailSafeLog.txt");
-
-        string direction;
-        int _time;
+        public int Id { get; set; }
+        public string Direction { get; set; }
+        public DateTime Time { get; set; }
 
         public List<Lane> lanes = new List<Lane>();
 
-        public Sailing()
+        public Sailing(string time)
+        {
+            this.Initialise();
+            this.SetTimeAndDirection(time);
+        }
+
+        private void Initialise()
         {
             for (int n = 0; n < 3; n++)
             {
                 lanes.Add(new Lane(30, 0));
             }
-
-            this.LoadFromExSource();
         }
 
-        /// <summary>
-        /// Method to Load Contents of the External Text File
-        /// </summary>
-        private void LoadFromExSource()
+        private void SetTimeAndDirection(string time)
         {
-            StreamReader inputStream = new StreamReader(destFile);
-            while(!inputStream.EndOfStream)
-            {
-                Vehicle newBooking = Vehicle.Load(inputStream);
-                lanes.Add(newBooking);
+            if (time.Contains("9am")) {
+                this.Time = this.ParseStringTime("09:00");
+                this.Direction = SailingDirection.Northbound;
             }
 
-            inputStream.Close();
-        }
-
-        /// <summary>
-        /// Method to Save Contents to the External Text File
-        /// </summary>
-        public void SaveToExSource()
-        {
-            StreamWriter outputStream = new StreamWriter(destFile);
-            for (int i = 0; i < lanes.Count; i++)
-            {
-                lanes[i].SaveLaneData(outputStream);
+            if (time.Contains("10am")) {
+                this.Time = this.ParseStringTime("10:00");
+                this.Direction = SailingDirection.Southbound;
             }
 
-            outputStream.Close();
+            if (time.Contains("4pm")) {
+                this.Time = this.ParseStringTime("16:00");
+                this.Direction = SailingDirection.Northbound;
+            }
+
+            if (time.Contains("5pm")) {
+                this.Time = this.ParseStringTime("17:00");
+                this.Direction = SailingDirection.Southbound;
+            }
         }
 
-        private void WriteLaneData(StreamWriter outputStream, Lane lane, Vehicle vehicle) 
+        private DateTime ParseStringTime(string time)
         {
-            string output = string.Join(", ", vehicle.Type, vehicle.Name, vehicle.License, vehicle.Time, vehicle.DirectionNtoS, vehicle.DirectionStoN, vehicle.VehicleLength);
-            outputStream.WriteLine(output);
+            return DateTime.ParseExact(time, "HH:mm", CultureInfo.InvariantCulture);
         }
+
+
+        ///// <summary>
+        ///// Method to Load Contents of the External Text File
+        ///// </summary>
+        //private void LoadFromExSource()
+        //{
+        //    StreamReader inputStream = new StreamReader(destFile);
+        //    while(!inputStream.EndOfStream)
+        //    {
+        //        Vehicle newBooking = Vehicle.Load(inputStream);
+        //        lanes.Add(newBooking);
+        //    }
+
+        //    inputStream.Close();
+        //}
+
+        ///// <summary>
+        ///// Method to Save Contents to the External Text File
+        ///// </summary>
+        //public void SaveToExSource()
+        //{
+        //    StreamWriter outputStream = new StreamWriter(destFile);
+        //    for (int i = 0; i < lanes.Count; i++)
+        //    {
+        //        lanes[i].SaveLaneData(outputStream);
+        //    }
+
+        //    outputStream.Close();
+        //}
+
+        //private void WriteLaneData(StreamWriter outputStream, Lane lane, Vehicle vehicle) 
+        //{
+        //    string output = string.Join(", ", vehicle.Type, vehicle.Name, vehicle.License, vehicle.Time, vehicle.DirectionNtoS, vehicle.DirectionStoN, vehicle.VehicleLength);
+        //    outputStream.WriteLine(output);
+        //}
 
         /// <summary>
         /// The main entry point for the application.

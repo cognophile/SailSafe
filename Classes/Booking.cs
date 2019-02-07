@@ -1,38 +1,36 @@
 ﻿
 using System;
 using SailSafe.Classes;
+using System.IO;
 
 namespace SailSafe
 {
     public class Booking
     {
-        private readonly BookingRepository repository;
+        private BookingRepository repository;
+        private Sailing sailing;
+        private Vehicle vehicle;
 
-        public int Time { get; set; }
+        public DateTime BookingDate { get; set; } = DateTime.Now;
         public string Name { get; set; }
-        public string License { get; set; }
-        public string Direction { get; set; }
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="name"> The Full Name of the Guest to be Booked </param>
-        /// <param name="license"> The License Plate of the Guest's Vehicle </param>
-        /// <param name="time"> The Sailing Time the Guest will be booked for </param>
-        /// <param name="direction"></param>
-        public Booking(string name, string license, int time, string direction)
+        public Booking(string name, string license, string timeAndDirection, string vehicleType)
         {
-            this.repository = new BookingRepository();
+            this.Initialise();
+            this.Name = name;
 
-            Name = name;
-            License = license;
-            Time = time;
-            Direction = direction;
+            this.sailing = new Sailing(timeAndDirection);
+            this.vehicle = new Vehicle(license, vehicleType);
         }
 
-        public bool Write()
+        public bool Create()
         {
-            return this.repository.Save();
+            return this.repository.Save(this.BookingDate, this.Name, this.vehicle.License, this.sailing.Time, this.vehicle.Type.ToString());
+        }
+
+        private void Initialise()
+        {
+            this.repository = new BookingRepository();
         }
     }
 }
