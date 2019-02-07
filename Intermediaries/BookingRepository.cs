@@ -2,7 +2,7 @@
 using System.IO;
 using Sailsafe.Interfaces;
 
-namespace SailSafe
+namespace SailSafe.Intermediaries
 {
     public class BookingRepository : IRepository
     {
@@ -35,13 +35,17 @@ namespace SailSafe
             throw new NotImplementedException();
         }
 
-        public bool Save(DateTime dateTime, string name, string license, DateTime time, string vehicleType)
+        public bool Save(params object[] args)
         {
+            Booking booking = (Booking)args[0];
+            Vehicle vehicle = (Vehicle)args[1];
+            Sailing sailing = (Sailing)args[2];
+
             if (!Directory.Exists(outputFile) || new FileInfo(outputFile).Length == 0) {
-                return this.Append(dateTime, name, license, time.ToString(), vehicleType);
+                return this.Append(booking.BookingDate, booking.Name, vehicle.License, sailing.Time, vehicle.Type);
             }
             else {
-                return this.Create(dateTime, name, license, time.ToString(), vehicleType);
+                return this.Create(booking.BookingDate, booking.Name, vehicle.License, sailing.Time, vehicle.Type);
             }
         }
 
@@ -56,11 +60,11 @@ namespace SailSafe
             outputStream.Close();
         }
 
-        private bool Append(DateTime dateTime, string name, string license, string time, string vehicleType)
+        private bool Append(DateTime dateTime, string name, string license, DateTime time, string vehicleType)
         {
             using (outputStream = File.AppendText(outputFile))
             {
-                string line = string.Join(", ", dateTime.ToShortDateString(), name, license, time, vehicleType);
+                string line = string.Join(", ", dateTime.ToShortDateString(), name, license, time.ToShortTimeString(), vehicleType);
                 outputStream.WriteLine(line);
 
                 this.Dispose();
@@ -69,11 +73,11 @@ namespace SailSafe
             return true;
         }
 
-        private bool Create(DateTime dateTime, string name, string license, string time, string vehicleType)
+        private bool Create(DateTime dateTime, string name, string license, DateTime time, string vehicleType)
         {
             using (outputStream = new StreamWriter(new FileStream(outputFile, FileMode.OpenOrCreate, FileAccess.ReadWrite)))
             {
-                string line = string.Join(", ", dateTime.ToShortDateString(), name, license, time, vehicleType);
+                string line = string.Join(", ", dateTime.ToShortDateString(), name, license, time.ToShortTimeString(), vehicleType);
                 outputStream.WriteLine(line);
 
                 this.Dispose();

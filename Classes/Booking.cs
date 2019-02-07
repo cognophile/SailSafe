@@ -1,7 +1,5 @@
-﻿
-using System;
-using SailSafe.Classes;
-using System.IO;
+﻿using System;
+using SailSafe.Intermediaries;
 
 namespace SailSafe
 {
@@ -25,7 +23,7 @@ namespace SailSafe
 
         public bool Create()
         {
-            return this.repository.Save(this.BookingDate, this.Name, this.vehicle.License, this.sailing.Time, this.vehicle.Type.ToString());
+            return this.repository.Save(this, this.vehicle, this.sailing);
         }
 
         private void Initialise()

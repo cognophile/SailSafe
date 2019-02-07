@@ -6,7 +6,7 @@ namespace Sailsafe.Interfaces
     {
         void Initialise();
         void Dispose();
-        bool Save(DateTime dateTime, string name, string license, DateTime time, string vehicleType);
+        bool Save(params object[] args);
         bool Remove();
         bool Edit();
         string ReadOne();

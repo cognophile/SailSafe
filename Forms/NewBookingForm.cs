@@ -5,13 +5,13 @@
  */
 using System;
 using System.Windows.Forms;
-using System.IO;
+using SailSafe.Intermediaries;
 
 namespace SailSafe
 {
     public partial class NewBookingForm : Form
     {
-        private Booking booking;
+        private BookingManager manager;
 
         public NewBookingForm()
         {
@@ -67,8 +67,8 @@ namespace SailSafe
 
             if (txtBookName != null && txtLicenseBook != null)
             {
-                this.booking = new Booking(txtBookName.Text.ToString(), txtLicenseBook.Text.ToString(), radTimeSelected, vehicleSelected);
-                this.booking.Create();
+                this.manager = new BookingManager(txtBookName.Text.ToString(), txtLicenseBook.Text.ToString(), radTimeSelected, vehicleSelected);
+                this.manager.DoCreate();
             }
             else
             {

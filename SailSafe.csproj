@@ -143,9 +143,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Classes\BookingRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Classes\VehicleType.cs" />
+    <Compile Include="Intermediaries\BookingManager.cs" />
+    <Compile Include="Intermediaries\BookingRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -172,6 +173,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Intermediaries\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
