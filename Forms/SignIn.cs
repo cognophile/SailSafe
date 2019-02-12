@@ -28,19 +28,19 @@ namespace SailSafe
                 txtUsername.Clear();
                 txtPassword.Clear();
                 txtUsername.Focus();
+
+                return;
+            }
+
+            if (userID.ToUpper() == txtUsername.Text.ToUpper() && userPassword == txtPassword.Text)
+            {
+                SailSafeMenu mainMenu = new SailSafeMenu();
+                mainMenu.Show();
+                this.Hide();
             }
             else
             {
-                if (userID.ToUpper() == txtUsername.Text.ToUpper() && userPassword == txtPassword.Text)
-                {
-                        SailSafeMenu accessGranted = new SailSafeMenu();
-                        accessGranted.Show();
-                        this.Hide();
-                }
-                else
-                {
-                        Unauthorised();
-                }
+                Unauthorised();
             }
         }
 
