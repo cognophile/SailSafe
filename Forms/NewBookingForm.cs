@@ -20,8 +20,8 @@ namespace SailSafe
 
         private void button4_Click(object sender, EventArgs e)
         {
-            SailSafeMenu homeButton = new SailSafeMenu();
-            homeButton.Show();
+            SailSafeMenu mainMenu = new SailSafeMenu();
+            mainMenu.Show();
             this.Hide();
         }
 
