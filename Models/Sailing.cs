@@ -3,10 +3,10 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-using SailSafe.Classes;
+using SailSafe.Models;
 using SailSafe.Utilities;
 
-namespace SailSafe
+namespace SailSafe.Models
 {
     public class Sailing
     {

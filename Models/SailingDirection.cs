@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SailSafe.Classes
+namespace SailSafe.Models
 {
     public static class SailingDirection
     {

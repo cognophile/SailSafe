@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using SailSafe.Classes;
+using SailSafe.Models;
 
-namespace SailSafe
+namespace SailSafe.Models
 {
     class Car : Vehicle
     {

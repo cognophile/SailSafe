@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace SailSafe
+namespace SailSafe.Models
 {
     public class Lane 
     {

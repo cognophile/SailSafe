@@ -1,7 +1,7 @@
 ﻿using System;
 using SailSafe.Intermediaries;
 
-namespace SailSafe
+namespace SailSafe.Models
 {
     public class Booking
     {

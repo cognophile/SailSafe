@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Collections.Generic;
 
 using Sailsafe.Interfaces;
-using System.Linq;
 using SailSafe.Utilities;
+using SailSafe.Models;
 
 namespace SailSafe.Intermediaries
 {

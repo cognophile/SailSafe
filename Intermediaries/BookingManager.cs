@@ -1,4 +1,5 @@
 ﻿using System;
+using SailSafe.Models;
 
 namespace SailSafe.Intermediaries
 {
