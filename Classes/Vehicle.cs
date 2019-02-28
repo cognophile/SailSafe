@@ -15,6 +15,11 @@ namespace SailSafe
         {
         }
 
+        public Vehicle(string license)
+        {
+            this.License = license;
+        }
+
         public Vehicle(string license, string type)
         {
             this.License = license;

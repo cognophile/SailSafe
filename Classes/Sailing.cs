@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 
 using SailSafe.Classes;
-using System.Globalization;
+using SailSafe.Utilities;
 
 namespace SailSafe
 {
@@ -30,34 +30,33 @@ namespace SailSafe
             }
         }
 
+        public void AssignLane()
+        {
+
+        }
+
         private void SetTimeAndDirection(string time)
         {
             if (time.Contains("9am")) {
-                this.Time = this.ParseStringTime("09:00");
+                this.Time = DateTimeHelper.ParseStringTime("09:00");
                 this.Direction = SailingDirection.Northbound;
             }
 
             if (time.Contains("10am")) {
-                this.Time = this.ParseStringTime("10:00");
+                this.Time = DateTimeHelper.ParseStringTime("10:00");
                 this.Direction = SailingDirection.Southbound;
             }
 
             if (time.Contains("4pm")) {
-                this.Time = this.ParseStringTime("16:00");
+                this.Time = DateTimeHelper.ParseStringTime("16:00");
                 this.Direction = SailingDirection.Northbound;
             }
 
             if (time.Contains("5pm")) {
-                this.Time = this.ParseStringTime("17:00");
+                this.Time = DateTimeHelper.ParseStringTime("17:00");
                 this.Direction = SailingDirection.Southbound;
             }
         }
-
-        private DateTime ParseStringTime(string time)
-        {
-            return DateTime.ParseExact(time, "HH:mm", CultureInfo.InvariantCulture);
-        }
-
 
         ///// <summary>
         ///// Method to Load Contents of the External Text File

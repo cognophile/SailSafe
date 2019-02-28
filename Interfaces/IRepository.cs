@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Sailsafe.Interfaces
 {
@@ -7,9 +8,9 @@ namespace Sailsafe.Interfaces
         void Initialise();
         void Dispose();
         bool Save(params object[] args);
-        bool Remove();
+        bool Remove(params object[] args);
         bool Edit();
         string ReadOne();
-        string ReadAll();
+        List<string> ReadAll();
     }
 }

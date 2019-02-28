@@ -147,6 +147,7 @@
     <Compile Include="Classes\VehicleType.cs" />
     <Compile Include="Intermediaries\BookingManager.cs" />
     <Compile Include="Intermediaries\BookingRepository.cs" />
+    <Compile Include="Utilities\DateTimeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -175,6 +176,7 @@
   <ItemGroup />
   <ItemGroup>
     <Folder Include="Intermediaries\" />
+    <Folder Include="Utilities\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

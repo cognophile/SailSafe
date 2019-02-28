@@ -12,6 +12,14 @@ namespace SailSafe
         public DateTime BookingDate { get; set; } = DateTime.Now;
         public string Name { get; set; }
 
+        public Booking(string name, string license)
+        {
+            this.Initialise();
+            this.Name = name;
+
+            this.vehicle = new Vehicle(license);
+        }
+
         public Booking(string name, string license, string timeAndDirection, string vehicleType)
         {
             this.Initialise();
@@ -21,14 +29,29 @@ namespace SailSafe
             this.vehicle = new Vehicle(license, vehicleType);
         }
 
+        private void Initialise()
+        {
+            this.repository = new BookingRepository();
+        }
+
         public bool Create()
         {
             return this.repository.Save(this, this.vehicle, this.sailing);
         }
 
-        private void Initialise()
+        public bool Delete()
         {
-            this.repository = new BookingRepository();
+            return this.repository.Remove(this);
+        }
+
+        public string GetCustomer()
+        {
+            return this.Name;
+        }
+
+        public string GetVehicleLicense()
+        {
+            return this.vehicle.License;
         }
     }
 }
