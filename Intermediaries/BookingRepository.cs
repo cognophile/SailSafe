@@ -44,22 +44,33 @@ namespace SailSafe.Intermediaries
             return lines;
         }
 
-        public string ReadOne()
+        /// <summary>
+        /// Search for a single booking
+        /// </summary>
+        /// <returns>The one.</returns>
+        /// <param name="args">Arguments.</param>
+        public List<string> ReadOne(params object[] args)
         {
-            throw new NotImplementedException();
+            Booking booking = (Booking)args[0];
+            var filteredBookings = this.Search(booking);
+
+            if (filteredBookings != null)
+            {
+                return filteredBookings;
+            }
+
+            return new List<string>(); 
         }
 
         /// <summary>
-        /// Remove the specified args.
+        /// Remove the specified Booking
         /// </summary>
         /// <returns>Boolean: success</returns>
         /// <param name="args">0: Booking</param>
         public bool Remove(params object[] args)
         {
             Booking booking = (Booking)args[0];
-
-            List<string> bookings = this.ReadAll();
-            var filteredBookings = bookings.Where(line => !line.Contains(booking.GetCustomer()) && !line.Contains(booking.GetVehicleLicense()));
+            var filteredBookings = this.Search(booking);
 
             if (filteredBookings != null)
             {
@@ -70,7 +81,7 @@ namespace SailSafe.Intermediaries
         }
 
         /// <summary>
-        /// Save the specified args.
+        /// Save the specified Booking
         /// </summary>
         /// <returns>Boolean: success</returns>
         /// <param name="args">0: Booking, !: Vehicle, @: Sailing</param>
@@ -126,7 +137,7 @@ namespace SailSafe.Intermediaries
             return true;
         }
 
-        private bool Overwrite(IEnumerable<string> bookings)
+        private bool Overwrite(ICollection<string> bookings)
         {
             using (outputStream = new StreamWriter(new FileStream(outputFile, FileMode.Create, FileAccess.ReadWrite)))
             {
@@ -139,6 +150,12 @@ namespace SailSafe.Intermediaries
             }
 
             return true;
+        }
+
+        private List<string> Search(Booking booking)
+        {
+            List<string> bookings = this.ReadAll();
+            return bookings.Where(line => !line.Contains(booking.GetCustomer()) && !line.Contains(booking.GetVehicleLicense())).ToList();
         }
     }
 }

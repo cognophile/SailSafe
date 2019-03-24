@@ -10,7 +10,7 @@ namespace Sailsafe.Interfaces
         bool Save(params object[] args);
         bool Remove(params object[] args);
         bool Edit();
-        string ReadOne();
+        List<string> ReadOne(params object[] args);
         List<string> ReadAll();
     }
 }

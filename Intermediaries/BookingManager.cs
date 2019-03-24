@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SailSafe.Models;
 
 namespace SailSafe.Intermediaries
@@ -33,6 +34,16 @@ namespace SailSafe.Intermediaries
             }
 
             return false;
+        }
+
+        public List<string> DoSearch()
+        {
+            if (this.booking != null)
+            {
+                return this.booking.Search();
+            }
+
+            return new List<string>();
         }
     }
 }

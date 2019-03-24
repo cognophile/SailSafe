@@ -1,5 +1,7 @@
 ﻿using System;
 using SailSafe.Intermediaries;
+using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 
 namespace SailSafe.Models
 {
@@ -42,6 +44,11 @@ namespace SailSafe.Models
         public bool Delete()
         {
             return this.repository.Remove(this);
+        }
+
+        public List<string> Search()
+        {
+            return this.repository.ReadOne(this);
         }
 
         public string GetCustomer()

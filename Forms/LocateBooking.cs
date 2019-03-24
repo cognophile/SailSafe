@@ -3,18 +3,16 @@ using System;
 using System.Windows.Forms;
 using System.IO;
 
+using SailSafe.Intermediaries;
+using System.Linq;
+using System.Collections.Generic;
+
 namespace SailSafe
 {
     public partial class LocateBooking : Form
     {
-        public static string exMessage;
-
-        // Cite: (MSDN, 2015, Environment.GetFolderPath Method (Environment.SpecialFolder))
-        // Output Stream - Specify Path
-        // Static as to not create ""A field initializer cannot reference the nonstatic field, method, or property..." error.
-        // Caused by attempting to assign non-static instance variable to another non-static instance variable.
-        static string destPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-        string destFile = Path.Combine(destPath, "SailSafeLog.txt");
+        private static string exMessage;
+        private BookingManager manager;
 
         public LocateBooking()
         {
@@ -41,7 +39,7 @@ namespace SailSafe
         /// <param name="e"></param>
         private void btnLocateSearch_Click(object sender, EventArgs e)
         {
-            SearchForBooking();
+            this.DoSearch();
         }
 
         /// <summary>
@@ -69,18 +67,12 @@ namespace SailSafe
         {
             if (e.KeyChar == (char)ConsoleKey.Enter)
             {
-                SearchForBooking();
+                this.DoSearch();
             }
         }
 
-        public void SearchForBooking()
+        private void DoSearch()
         {
-            string line;
-            string[] words = new string[5];
-            char[] seperator = { ',' };
-            bool found = false;
-            StreamReader inputStream;
-
             if (txtNameLocate.Text == "" || txtPlateLocate.Text == "")
             {
                 MessageBox.Show("Error: Missing Guest Criteria.");
@@ -89,36 +81,23 @@ namespace SailSafe
             {
                 try
                 {
-                    inputStream = File.OpenText(destFile);
-                    line = inputStream.ReadToEnd();
+                    this.manager = new BookingManager(txtNameLocate.Text, txtPlateLocate.Text);
+                    var booking = this.manager.DoSearch();
 
-                    while (line != null && found == false)
+                    if (booking.Any())
                     {
-                        // KNOWN BUG: Due to use of array, search only works on first guest data line in txt.
-                        // SOLOUTION (?): Use of generics list? use of Stack?
-                        words = line.Split(seperator);
-                        if (words[1].Trim().ToUpper() == txtNameLocate.Text.ToUpper()
-                            && words[2].Trim().ToUpper() == txtPlateLocate.Text.ToUpper())
-                        {
-                            txtDisplayDate.Text = words[0].Trim();
-                            txtDisplayName.Text = words[1].Trim();
-                            txtDisplayPlate.Text = words[2].Trim();
-                            txtDisplaySailing.Text = words[3].Trim();
-                            txtDisplayVehicle.Text = words[4].Trim();
-                            found = true;
-                            inputStream.Close();
-                        }
-                        else
-                        {
-                            line = inputStream.ReadToEnd();
-                        }
-                    }
+                        List<string> details = booking[0].Split(',').ToList<string>();
 
-                    if (found == false)
-                    {
-                        MessageBox.Show("No record matching" + txtNameLocate + "or" + txtPlateLocate + "found. Try again.");
+                        txtDisplayDate.Text = details[0].Trim();
+                        txtDisplayName.Text = details[1].Trim();
+                        txtDisplayPlate.Text = details[2].Trim();
+                        txtDisplaySailing.Text = details[3].Trim();
+                        txtDisplayVehicle.Text = details[4].Trim();
                     }
-                    inputStream.Close();
+                    else
+                    {
+                        MessageBox.Show("No record matching " + txtNameLocate + " or " + txtPlateLocate + " found. Try again.");
+                    }
                 }
                 catch (IndexOutOfRangeException outRange)
                 {
