@@ -18,7 +18,7 @@ namespace SailSafe
 
         private void btnEditHome_Click(object sender, EventArgs e)
         {
-            SailSafeMenu mainMenu = new SailSafeMenu();
+            MainMenu mainMenu = new MainMenu();
             mainMenu.Show();
             this.Hide();
         }

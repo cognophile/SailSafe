@@ -26,7 +26,7 @@ namespace SailSafe
         /// <param name="e"></param>
         private void btnLocateHome_Click(object sender, EventArgs e)
         {
-            SailSafeMenu returnHome = new SailSafeMenu();
+            MainMenu returnHome = new MainMenu();
             returnHome.Show();
             this.Hide();
         }

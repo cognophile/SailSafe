@@ -1,6 +1,6 @@
 ﻿namespace SailSafe
 {
-    partial class NewBookingForm
+    partial class CreateBooking
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewBookingForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateBooking));
             this.txtLicenseBook = new System.Windows.Forms.TextBox();
             this.lblLicenseBooking = new System.Windows.Forms.Label();
             this.lblBookInstruct = new System.Windows.Forms.Label();

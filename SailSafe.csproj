@@ -78,11 +78,11 @@
     <Compile Include="Forms\LocateBooking.Designer.cs">
       <DependentUpon>LocateBooking.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SailSafeMenu.cs">
+    <Compile Include="Forms\MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\SailSafeMenu.Designer.cs">
-      <DependentUpon>SailSafeMenu.cs</DependentUpon>
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CreateBooking.cs">
       <SubType>Form</SubType>
@@ -92,19 +92,19 @@
     </Compile>
     <Compile Include="Models\Sailing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\SignIn.cs">
+    <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\SignIn.Designer.cs">
-      <DependentUpon>SignIn.cs</DependentUpon>
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Van.cs" />
     <Compile Include="Models\Vehicle.cs" />
-    <Compile Include="Forms\ViewSailings.cs">
+    <Compile Include="Forms\ListBookings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ViewSailings.Designer.cs">
-      <DependentUpon>ViewSailings.cs</DependentUpon>
+      <DependentUpon>ListBookings.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\CancelBooking.resx">
       <DependentUpon>CancelBooking.cs</DependentUpon>
@@ -113,7 +113,7 @@
       <DependentUpon>LocateBooking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SailSafeMenu.resx">
-      <DependentUpon>SailSafeMenu.cs</DependentUpon>
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewBookingForm.resx">
       <DependentUpon>CreateBooking.cs</DependentUpon>
@@ -129,10 +129,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Forms\SignIn.resx">
-      <DependentUpon>SignIn.cs</DependentUpon>
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewSailings.resx">
-      <DependentUpon>ViewSailings.cs</DependentUpon>
+      <DependentUpon>ListBookings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

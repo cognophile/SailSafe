@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace SailSafe
 {
-    public partial class SignIn : Form
+    public partial class Login : Form
     {
-        public SignIn()
+        public Login()
         {
             InitializeComponent();
         }
@@ -34,7 +34,7 @@ namespace SailSafe
 
             if (userID.ToUpper() == txtUsername.Text.ToUpper() && userPassword == txtPassword.Text)
             {
-                SailSafeMenu mainMenu = new SailSafeMenu();
+                MainMenu mainMenu = new MainMenu();
                 mainMenu.Show();
                 this.Hide();
             }

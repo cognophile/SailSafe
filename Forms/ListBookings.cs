@@ -6,18 +6,18 @@ using SailSafe.Intermediaries;
 
 namespace SailSafe
 {
-    public partial class ViewSailings : Form
+    public partial class ListBookings : Form
     {
         private BookingManager manager;
 
-        public ViewSailings()
+        public ListBookings()
         {
             InitializeComponent();
         }
 
         private void btnMenuLogOut_Click(object sender, EventArgs e)
         {
-            SailSafeMenu returnHome = new SailSafeMenu();
+            MainMenu returnHome = new MainMenu();
             returnHome.Show();
             this.Hide();
         }
@@ -35,7 +35,7 @@ namespace SailSafe
 
         private void btnViewAddBook_Click(object sender, EventArgs e)
         {
-            NewBookingForm addBooking = new NewBookingForm();
+            CreateBooking addBooking = new CreateBooking();
             addBooking.Show();
             this.Hide();
         }

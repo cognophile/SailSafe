@@ -9,18 +9,18 @@ using SailSafe.Intermediaries;
 
 namespace SailSafe
 {
-    public partial class NewBookingForm : Form
+    public partial class CreateBooking : Form
     {
         private BookingManager manager;
 
-        public NewBookingForm()
+        public CreateBooking()
         {
             InitializeComponent();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            SailSafeMenu mainMenu = new SailSafeMenu();
+            MainMenu mainMenu = new MainMenu();
             mainMenu.Show();
             this.Hide();
         }
