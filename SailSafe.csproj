@@ -84,11 +84,11 @@
     <Compile Include="Forms\SailSafeMenu.Designer.cs">
       <DependentUpon>SailSafeMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewBookingForm.cs">
+    <Compile Include="Forms\CreateBooking.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\NewBookingForm.Designer.cs">
-      <DependentUpon>NewBookingForm.cs</DependentUpon>
+      <DependentUpon>CreateBooking.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Sailing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,7 +116,7 @@
       <DependentUpon>SailSafeMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewBookingForm.resx">
-      <DependentUpon>NewBookingForm.cs</DependentUpon>
+      <DependentUpon>CreateBooking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

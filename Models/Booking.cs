@@ -14,6 +14,11 @@ namespace SailSafe.Models
         public DateTime BookingDate { get; set; } = DateTime.Now;
         public string Name { get; set; }
 
+        public Booking()
+        {
+            this.Initialise();
+        }
+
         public Booking(string name, string license)
         {
             this.Initialise();
@@ -34,6 +39,11 @@ namespace SailSafe.Models
         private void Initialise()
         {
             this.repository = new BookingRepository();
+        }
+
+        public List<string> GetAll()
+        {
+            return this.repository.ReadAll();
         }
 
         public bool Create()

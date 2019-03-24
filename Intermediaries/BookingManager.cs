@@ -8,6 +8,11 @@ namespace SailSafe.Intermediaries
     {
         private Booking booking;
 
+        public BookingManager()
+        {
+            this.booking = new Booking();
+        }
+
         public BookingManager(string name, string license)
         {
             this.booking = new Booking(name, license);
@@ -16,6 +21,11 @@ namespace SailSafe.Intermediaries
         public BookingManager(string name, string license, string timeAndDirection, string vehicleType)
         {
             this.booking = new Booking(name, license, timeAndDirection, vehicleType);
+        }
+
+        public List<string> GetAll()
+        {
+            return this.booking.GetAll();
         }
 
         public bool DoCreate()

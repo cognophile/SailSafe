@@ -26,6 +26,10 @@ namespace SailSafe.Intermediaries
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Reads all bookings
+        /// </summary>
+        /// <returns>List of all bookings as strings</returns>
         public List<string> ReadAll()
         {
             List<string> lines = new List<string>();
@@ -47,7 +51,7 @@ namespace SailSafe.Intermediaries
         /// <summary>
         /// Search for a single booking
         /// </summary>
-        /// <returns>The one.</returns>
+        /// <returns>List of bookings as strings</returns>
         /// <param name="args">Arguments.</param>
         public List<string> ReadOne(params object[] args)
         {
@@ -99,12 +103,24 @@ namespace SailSafe.Intermediaries
             }
         }
 
+        /// <summary>
+        /// Initialise the persistance location and access
+        /// </summary>
         public void Initialise()
         {
             outputPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             outputFile = Path.Combine(outputPath, "SailSafeLog.txt");
         }
 
+        /// <summary>
+        /// Releases all resource used by the <see cref="T:SailSafe.Intermediaries.BookingRepository"/> object.
+        /// </summary>
+        /// <remarks>Call <see cref="Dispose"/> when you are finished using the
+        /// <see cref="T:SailSafe.Intermediaries.BookingRepository"/>. The <see cref="Dispose"/> method leaves the
+        /// <see cref="T:SailSafe.Intermediaries.BookingRepository"/> in an unusable state. After calling
+        /// <see cref="Dispose"/>, you must release all references to the
+        /// <see cref="T:SailSafe.Intermediaries.BookingRepository"/> so the garbage collector can reclaim the memory
+        /// that the <see cref="T:SailSafe.Intermediaries.BookingRepository"/> was occupying.</remarks>
         public void Dispose()
         {
             if (inputStream != null) { inputStream.Close(); }
