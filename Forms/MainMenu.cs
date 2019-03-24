@@ -2,27 +2,25 @@
 using System;
 using System.Windows.Forms;
 
-namespace SailSafe___1413042
+namespace SailSafe
 {
-    public partial class SailSafeMenu : Form
+    public partial class MainMenu : Form
     {
-        public SailSafeMenu()
+        public MainMenu()
         {
             InitializeComponent();
         }
-
-        #region Event Methods
         
         private void button1_Click(object sender, EventArgs e)
         {
-            NewBookingForm newGuest = new NewBookingForm();
+            CreateBooking newGuest = new CreateBooking();
             newGuest.Show();
             this.Hide();
         }
 
         private void btnMenuLogOut_Click(object sender, EventArgs e)
         {
-            SignIn signOut = new SignIn();
+            Login signOut = new Login();
             signOut.Show();
             this.Hide();
         }
@@ -36,7 +34,7 @@ namespace SailSafe___1413042
 
         private void btnViewSailings_Click(object sender, EventArgs e)
         {
-            ViewSailings openSailings = new ViewSailings();
+            ListBookings openSailings = new ListBookings();
             openSailings.Show();
             this.Hide();
         }
@@ -53,6 +51,5 @@ namespace SailSafe___1413042
         {
             Application.Exit();
         }
-        #endregion
     }
 }

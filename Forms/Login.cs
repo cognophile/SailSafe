@@ -2,16 +2,15 @@
 using System;
 using System.Windows.Forms;
 
-namespace SailSafe___1413042
+namespace SailSafe
 {
-    public partial class SignIn : Form
+    public partial class Login : Form
     {
-        public SignIn()
+        public Login()
         {
             InitializeComponent();
         }
 
-        #region Log in Procedure Methods
         /// <summary>
         /// Method to calculate whether a users input details are correct or not
         /// If not, runs Unauthorised Method (not allowing access to program)
@@ -29,19 +28,19 @@ namespace SailSafe___1413042
                 txtUsername.Clear();
                 txtPassword.Clear();
                 txtUsername.Focus();
+
+                return;
+            }
+
+            if (userID.ToUpper() == txtUsername.Text.ToUpper() && userPassword == txtPassword.Text)
+            {
+                MainMenu mainMenu = new MainMenu();
+                mainMenu.Show();
+                this.Hide();
             }
             else
             {
-                if (userID.ToUpper() == txtUsername.Text.ToUpper() && userPassword == txtPassword.Text)
-                {
-                        SailSafeMenu accessGranted = new SailSafeMenu();
-                        accessGranted.Show();
-                        this.Hide();
-                }
-                else
-                {
-                        Unauthorised();
-                }
+                Unauthorised();
             }
         }
 
@@ -57,9 +56,6 @@ namespace SailSafe___1413042
             txtUsername.Focus();
         }
 
-        #endregion
-
-        #region Event Methods
         /// <summary>
         /// When password field has focus, this restricts the available user input to 4 chars
         /// Also hides password typing for security
@@ -118,7 +114,5 @@ namespace SailSafe___1413042
         {
             Application.Exit();
         }
-
-        #endregion
     }
 }

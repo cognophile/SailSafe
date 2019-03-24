@@ -28,7 +28,6 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -62,49 +61,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Booking.cs" />
+    <Compile Include="Models\Booking.cs" />
+    <Compile Include="Models\SailingDirection.cs" />
     <Compile Include="Forms\CancelBooking.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\CancelBooking.Designer.cs">
       <DependentUpon>CancelBooking.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Car.cs" />
-    <Compile Include="Classes\Lane.cs" />
-    <Compile Include="Classes\Large.cs" />
+    <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\Lane.cs" />
+    <Compile Include="Models\Large.cs" />
     <Compile Include="Forms\LocateBooking.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\LocateBooking.Designer.cs">
       <DependentUpon>LocateBooking.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SailSafeMenu.cs">
+    <Compile Include="Forms\MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\SailSafeMenu.Designer.cs">
-      <DependentUpon>SailSafeMenu.cs</DependentUpon>
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewBookingForm.cs">
+    <Compile Include="Forms\CreateBooking.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\NewBookingForm.Designer.cs">
-      <DependentUpon>NewBookingForm.cs</DependentUpon>
+      <DependentUpon>CreateBooking.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Sailing.cs" />
+    <Compile Include="Models\Sailing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\SignIn.cs">
+    <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\SignIn.Designer.cs">
-      <DependentUpon>SignIn.cs</DependentUpon>
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Van.cs" />
-    <Compile Include="Classes\Vehicle.cs" />
-    <Compile Include="Forms\ViewSailings.cs">
+    <Compile Include="Models\Van.cs" />
+    <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Forms\ListBookings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ViewSailings.Designer.cs">
-      <DependentUpon>ViewSailings.cs</DependentUpon>
+      <DependentUpon>ListBookings.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\CancelBooking.resx">
       <DependentUpon>CancelBooking.cs</DependentUpon>
@@ -113,10 +113,10 @@
       <DependentUpon>LocateBooking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SailSafeMenu.resx">
-      <DependentUpon>SailSafeMenu.cs</DependentUpon>
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewBookingForm.resx">
-      <DependentUpon>NewBookingForm.cs</DependentUpon>
+      <DependentUpon>CreateBooking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -129,10 +129,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Forms\SignIn.resx">
-      <DependentUpon>SignIn.cs</DependentUpon>
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewSailings.resx">
-      <DependentUpon>ViewSailings.cs</DependentUpon>
+      <DependentUpon>ListBookings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -143,6 +143,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Models\VehicleType.cs" />
+    <Compile Include="Intermediaries\BookingManager.cs" />
+    <Compile Include="Intermediaries\BookingRepository.cs" />
+    <Compile Include="Utilities\DateTimeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -168,6 +173,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Intermediaries\" />
+    <Folder Include="Utilities\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

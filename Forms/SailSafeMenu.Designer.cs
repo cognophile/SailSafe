@@ -1,6 +1,6 @@
-﻿namespace SailSafe___1413042
+﻿namespace SailSafe
 {
-    partial class SailSafeMenu
+    partial class MainMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SailSafeMenu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.btnCreateBooking = new System.Windows.Forms.Button();
             this.btnLocateBooking = new System.Windows.Forms.Button();
             this.btnEditBooking = new System.Windows.Forms.Button();
             this.btnViewSailings = new System.Windows.Forms.Button();
             this.lblWelcome = new System.Windows.Forms.Label();
-            this.lblAuthorInfo = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblSID = new System.Windows.Forms.Label();
             this.lblAppVersion = new System.Windows.Forms.Label();
             this.btnMenuLogOut = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -93,45 +90,12 @@
             this.lblWelcome.TabIndex = 4;
             this.lblWelcome.Text = "Welcome to SailSafe!";
             // 
-            // lblAuthorInfo
-            // 
-            this.lblAuthorInfo.AutoSize = true;
-            this.lblAuthorInfo.BackColor = System.Drawing.Color.Transparent;
-            this.lblAuthorInfo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAuthorInfo.Location = new System.Drawing.Point(292, 76);
-            this.lblAuthorInfo.Name = "lblAuthorInfo";
-            this.lblAuthorInfo.Size = new System.Drawing.Size(115, 14);
-            this.lblAuthorInfo.TabIndex = 5;
-            this.lblAuthorInfo.Text = "Author Information:";
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.BackColor = System.Drawing.Color.Transparent;
-            this.lblName.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(340, 99);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(65, 14);
-            this.lblName.TabIndex = 6;
-            this.lblName.Text = "Alex Boggis";
-            // 
-            // lblSID
-            // 
-            this.lblSID.AutoSize = true;
-            this.lblSID.BackColor = System.Drawing.Color.Transparent;
-            this.lblSID.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSID.Location = new System.Drawing.Point(340, 120);
-            this.lblSID.Name = "lblSID";
-            this.lblSID.Size = new System.Drawing.Size(71, 14);
-            this.lblSID.TabIndex = 7;
-            this.lblSID.Text = "SiD: 1413042";
-            // 
             // lblAppVersion
             // 
             this.lblAppVersion.AutoSize = true;
             this.lblAppVersion.BackColor = System.Drawing.Color.Transparent;
             this.lblAppVersion.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAppVersion.Location = new System.Drawing.Point(340, 140);
+            this.lblAppVersion.Location = new System.Drawing.Point(350, 38);
             this.lblAppVersion.Name = "lblAppVersion";
             this.lblAppVersion.Size = new System.Drawing.Size(65, 14);
             this.lblAppVersion.TabIndex = 8;
@@ -166,9 +130,6 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnMenuLogOut);
             this.Controls.Add(this.lblAppVersion);
-            this.Controls.Add(this.lblSID);
-            this.Controls.Add(this.lblName);
-            this.Controls.Add(this.lblAuthorInfo);
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.btnViewSailings);
             this.Controls.Add(this.btnEditBooking);
@@ -193,9 +154,6 @@
         private System.Windows.Forms.Button btnEditBooking;
         private System.Windows.Forms.Button btnViewSailings;
         private System.Windows.Forms.Label lblWelcome;
-        private System.Windows.Forms.Label lblAuthorInfo;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblSID;
         private System.Windows.Forms.Label lblAppVersion;
         private System.Windows.Forms.Button btnMenuLogOut;
         private System.Windows.Forms.Button button1;

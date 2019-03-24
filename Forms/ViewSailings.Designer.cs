@@ -1,6 +1,6 @@
-﻿namespace SailSafe___1413042
+﻿namespace SailSafe
 {
-    partial class ViewSailings
+    partial class ListBookings
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewSailings));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListBookings));
             this.lblLaneOne = new System.Windows.Forms.Label();
             this.lblViewInstruct = new System.Windows.Forms.Label();
             this.btnViewHome = new System.Windows.Forms.Button();
