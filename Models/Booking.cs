@@ -21,24 +21,25 @@ namespace SailSafe.Models
 
         public Booking(string name, string license)
         {
-            this.Initialise();
             this.Name = name;
-
             this.vehicle = new Vehicle(license);
+
+            this.Initialise();
         }
 
         public Booking(string name, string license, string timeAndDirection, string vehicleType)
         {
-            this.Initialise();
             this.Name = name;
-
             this.sailing = new Sailing(timeAndDirection);
             this.vehicle = new Vehicle(license, vehicleType);
+
+            this.Initialise();
         }
 
         private void Initialise()
         {
             this.repository = new BookingRepository();
+            var isAssigned = this.sailing.AssignLane(this.vehicle);
         }
 
         public List<string> GetAll()
