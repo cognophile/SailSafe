@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 using SailSafe.Models;
 using SailSafe.Utilities;
+using System.Runtime.CompilerServices;
 
 namespace SailSafe.Models
 {
@@ -13,8 +14,7 @@ namespace SailSafe.Models
         public int Id { get; set; }
         public string Direction { get; set; }
         public DateTime Time { get; set; }
-
-        public List<Lane> lanes = new List<Lane>();
+        public List<Lane> lanes;
 
         public Sailing(string time)
         {
@@ -24,15 +24,26 @@ namespace SailSafe.Models
 
         private void Initialise()
         {
-            for (int n = 0; n < 3; n++)
-            {
-                lanes.Add(new Lane(30, 0));
+            this.lanes = new List<Lane>();
+            var id = 1;
+
+            for (int n = 0; n < 3; n++) {
+                id = n + 1;
+                lanes.Add(new Lane(id, 30, 0));
             }
         }
 
-        public void AssignLane()
+        public bool AssignLane(Vehicle vehicle)
         {
+            var isAssigned = false;
+            var laneId = this.FindSpace(vehicle.Length);
 
+            if (laneId != 0) {
+                var matchedLane = this.lanes.Find(lane => lane.Id == laneId);
+                isAssigned = matchedLane.AddVehicle(vehicle);
+            }
+
+            return isAssigned;
         }
 
         private void SetTimeAndDirection(string time)
@@ -56,6 +67,17 @@ namespace SailSafe.Models
                 this.Time = DateTimeHelper.ParseStringTime("17:00");
                 this.Direction = SailingDirection.Southbound;
             }
+        }
+
+        private int FindSpace(int vehicleLength)
+        {
+            foreach(Lane lane in this.lanes) {
+                if (lane.HasSpace(vehicleLength)) {
+                    return lane.Id;
+                }
+            }
+
+            return 0;
         }
 
         ///// <summary>

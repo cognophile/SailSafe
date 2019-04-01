@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace SailSafe.Models
 {
     public class Lane 
     {
-        protected int spaceAvailable = 30;
-        protected int spaceOccupied = 0;
-        public static string LaneID { get; set; }
+        public int Id { get; set; }
+        private const int MAX_LENGTH = 30;
+        public int SpaceAvailable { get; set; } = MAX_LENGTH;
+        public int SpaceOccupied { get; set; } = 0;
         private List<Vehicle> vehicles = new List<Vehicle>();
 
         /// <summary>
@@ -20,34 +22,39 @@ namespace SailSafe.Models
         public Lane()
         { 
         }
-        
+
         /// <summary>
         /// Overloaded Lane Object Constructor
         /// </summary>
+        /// <param name="laneId"> Id number to assign the lane </param>
         /// <param name="spaceAvailable"> The amount of space currently available in the Lane Object </param>
         /// <param name="spaceOccupied"> The amount of space currently occupied in the Lane Object </param>
-        public Lane(int spaceAvailable, int spaceOccupied)
+        public Lane(int laneId, int spaceAvailable, int spaceOccupied)
         {
-            this.spaceAvailable = spaceAvailable;
-            this.spaceOccupied = spaceOccupied;
-        }
-        
-        /// <summary>
-        /// A method to allow the setting of the Lane Object's available space (after a vehicle has been placed in it, for example)
-        /// </summary>
-        public int SpaceAvailable
-        {
-            get { return this.spaceAvailable; }
-            set { this.spaceAvailable = value; }
+            this.Id = laneId;
+            this.SpaceAvailable = spaceAvailable;
+            this.SpaceOccupied = spaceOccupied;
         }
 
-        /// <summary>
-        /// A method to allow the setting of the Lane Object's occupied space (after a vehicle has been placed in it, for example)
-        /// </summary>
-        public int SpaceOccupied
+        public bool AddVehicle(Vehicle vehicle)
         {
-            get { return this.spaceOccupied; }
-            set { this.spaceOccupied = value; }
+            bool addSuccessful = false;
+
+            if (this.HasSpace(vehicle.Length)) {
+                this.SpaceOccupied += vehicle.Length;
+                this.SpaceAvailable -= vehicle.Length;
+                this.vehicles.Add(vehicle);
+
+                addSuccessful = true;
+                return addSuccessful;
+            }
+
+            return addSuccessful;
+        }
+
+        public bool HasSpace(int vehicleLength)
+        {
+            return (this.SpaceAvailable >= vehicleLength && this.SpaceOccupied < MAX_LENGTH);
         }
 
         public virtual void SaveLaneData(StreamWriter outputStream) { }
