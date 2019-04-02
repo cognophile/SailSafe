@@ -33,17 +33,20 @@ namespace SailSafe.Models
             }
         }
 
-        public bool AssignLane(Vehicle vehicle)
+        public int AssignLane(Vehicle vehicle)
         {
-            var isAssigned = false;
             var laneId = this.FindSpace(vehicle.Length);
 
             if (laneId != 0) {
                 var matchedLane = this.lanes.Find(lane => lane.Id == laneId);
-                isAssigned = matchedLane.AddVehicle(vehicle);
+                var isAssigned = matchedLane.AddVehicle(vehicle);
+
+                if (isAssigned) {
+                    return laneId;
+                }
             }
 
-            return isAssigned;
+            return 0;
         }
 
         private void SetTimeAndDirection(string time)

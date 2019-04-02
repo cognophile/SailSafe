@@ -39,7 +39,7 @@ namespace SailSafe.Models
         private void Initialise()
         {
             this.repository = new BookingRepository();
-            var isAssigned = this.sailing.AssignLane(this.vehicle);
+            var laneId = this.sailing.AssignLane(this.vehicle);
         }
 
         public List<string> GetAll()
