@@ -21,7 +21,7 @@ namespace SailSafe.Intermediaries
             this.Initialise();
         }
 
-        public bool Edit()
+        public bool Edit(params object[] args)
         {
             throw new NotImplementedException();
         }

@@ -9,7 +9,7 @@ namespace Sailsafe.Interfaces
         void Dispose();
         bool Save(params object[] args);
         bool Remove(params object[] args);
-        bool Edit();
+        bool Edit(params object[] args);
         List<string> ReadOne(params object[] args);
         List<string> ReadAll();
     }

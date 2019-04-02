@@ -83,41 +83,6 @@ namespace SailSafe.Models
             return 0;
         }
 
-        ///// <summary>
-        ///// Method to Load Contents of the External Text File
-        ///// </summary>
-        //private void LoadFromExSource()
-        //{
-        //    StreamReader inputStream = new StreamReader(destFile);
-        //    while(!inputStream.EndOfStream)
-        //    {
-        //        Vehicle newBooking = Vehicle.Load(inputStream);
-        //        lanes.Add(newBooking);
-        //    }
-
-        //    inputStream.Close();
-        //}
-
-        ///// <summary>
-        ///// Method to Save Contents to the External Text File
-        ///// </summary>
-        //public void SaveToExSource()
-        //{
-        //    StreamWriter outputStream = new StreamWriter(destFile);
-        //    for (int i = 0; i < lanes.Count; i++)
-        //    {
-        //        lanes[i].SaveLaneData(outputStream);
-        //    }
-
-        //    outputStream.Close();
-        //}
-
-        //private void WriteLaneData(StreamWriter outputStream, Lane lane, Vehicle vehicle) 
-        //{
-        //    string output = string.Join(", ", vehicle.Type, vehicle.Name, vehicle.License, vehicle.Time, vehicle.DirectionNtoS, vehicle.DirectionStoN, vehicle.VehicleLength);
-        //    outputStream.WriteLine(output);
-        //}
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

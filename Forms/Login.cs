@@ -11,12 +11,7 @@ namespace SailSafe
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Method to calculate whether a users input details are correct or not
-        /// If not, runs Unauthorised Method (not allowing access to program)
-        /// If correct, runs Authorised method (allowing access into program)
-        /// </summary>
-        public void Authorised()
+        private void Authenticate()
         {
             // For educational assessment purposes, only.
             const string userID = "Admin";
@@ -76,7 +71,7 @@ namespace SailSafe
         /// <param name="e"></param>
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            Authorised();
+            Authenticate();
         }
 
         /// <summary>
@@ -88,7 +83,7 @@ namespace SailSafe
         {
             if (e.KeyChar == (char)ConsoleKey.Enter)
             {
-                Authorised();
+                Authenticate();
             }
         }
 
@@ -101,7 +96,7 @@ namespace SailSafe
         {
             if (e.KeyChar == (char)ConsoleKey.Enter)
             {
-                Authorised();
+                Authenticate();
             }
         }
 
